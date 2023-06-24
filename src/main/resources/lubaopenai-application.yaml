@@ -1,0 +1,5 @@
+luba:
+  openai:
+    url: ${LUBA_OPENAI_URL:https://api.openai.com/v1}
+    key: ${LUBA_OPENAI_KEY}
+    temperature: ${LUBA_OPENAI_TEMPERATURE:0.9}
