@@ -20,10 +20,10 @@ import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class SpringTestSampleSimpleApplicationTests {
+public class OpenAIClientSpringTests {
 
 	@Test
-	public void testContextLoads() throws Exception {
+	public void testContextLoads() {
 	}
 
 }
