@@ -34,11 +34,10 @@
         </developer>
     </developers>
 
-    1
     <scm>
-        <connection>scm:git:git@github.com:hbelmiro/demo-library.git</connection>
-        <developerConnection>scm:git:ssh://github.com:hbelmiro/demo-library.git</developerConnection>
-        <url>https://github.com/hbelmiro/demo-library/tree/master</url>
+        <connection>scm:git:git@github.com:luba-ai/openai-client-spring.git</connection>
+        <developerConnection>scm:git:ssh://github.com:luba-ai/openai-client-spring.git</developerConnection>
+        <url>https://github.com/luba-ai/openai-client-spring</url>
     </scm>
 
     <repositories>
