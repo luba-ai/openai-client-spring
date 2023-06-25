@@ -6,8 +6,8 @@
     <servers>
         <server>
             <id>github</id>
-            <username>${env.ACTOR}</username>
-            <password>${env.TOKEN}</password>
+            <username>${ACTOR}</username>
+            <password>${TOKEN}</password>
         </server>
     </servers>
 </settings>
