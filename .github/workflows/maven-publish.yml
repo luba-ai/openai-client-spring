@@ -1,8 +1,8 @@
 name: Maven Package Deploy
 
 on:
-  release:
-    types: [created]
+  push:
+    branches: [ "main" ]
 
 jobs:
   build:
