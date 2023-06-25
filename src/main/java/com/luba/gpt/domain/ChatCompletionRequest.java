@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ChatCompletionRequest {
 
+    // todo: convert model to use an enum instead of a string
     private String model;
     private List<ChatCompletionMessage> messages;
     private Double temperature;
