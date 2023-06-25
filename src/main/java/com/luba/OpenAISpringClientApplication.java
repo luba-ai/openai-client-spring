@@ -16,10 +16,7 @@
 
 package com.luba;
 
-import com.luba.gpt.config.OpenAIConfig;
 import com.luba.gpt.config.YamlPropertySourceFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
@@ -31,21 +28,10 @@ import org.springframework.context.annotation.PropertySource;
 @EnableAutoConfiguration
 @ComponentScan
 @PropertySource(value = "classpath:lubaopenai-application.yaml", factory = YamlPropertySourceFactory.class)
-public class SampleSimpleApplication implements CommandLineRunner {
+public class OpenAISpringClientApplication {
 
-	// Simple example shows how a command line spring application can execute an
-	// injected bean service. Also demonstrates how you can use @Value to inject
-	// command line args ('--name=whatever') or application properties
-
-	@Autowired
-	private OpenAIConfig openAIConfig;
-
-	@Override
-	public void run(String... args) {
-		System.out.println(this.openAIConfig.getUrl());
+	public static void main(String[] args) {
+		SpringApplication.run(OpenAISpringClientApplication.class, args);
 	}
 
-	public static void main(String[] args) throws Exception {
-		SpringApplication.run(SampleSimpleApplication.class, args);
-	}
 }
