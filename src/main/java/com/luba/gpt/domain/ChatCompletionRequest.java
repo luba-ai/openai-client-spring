@@ -1,5 +1,7 @@
 package com.luba.gpt.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,10 +12,13 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonSerialize(using = ChatCompletionRequestSerializer.class)
 public class ChatCompletionRequest {
 
-    // todo: convert model to use an enum instead of a string
     private String model;
     private List<ChatCompletionMessage> messages;
-    private Double temperature;
+    private double temperature;
+    private Class<? extends IBaseFunction> functions;
+    @JsonProperty("function_call")
+    private List<String> functionCall;
 }

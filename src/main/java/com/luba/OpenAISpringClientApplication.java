@@ -30,8 +30,4 @@ import org.springframework.context.annotation.PropertySource;
 @PropertySource(value = "classpath:lubaopenai-application.yaml", factory = YamlPropertySourceFactory.class)
 public class OpenAISpringClientApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(OpenAISpringClientApplication.class, args);
-	}
-
 }

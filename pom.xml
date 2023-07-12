@@ -17,6 +17,7 @@
         <junit.version>4.13.2</junit.version>
         <lombok.version>1.18.22</lombok.version>
         <mockwebserver.version>4.11.0</mockwebserver.version>
+        <jackson.version>2.12.5</jackson.version>
     </properties>
 
     <licenses>
@@ -76,6 +77,16 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-jsonSchema</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
