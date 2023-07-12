@@ -38,6 +38,10 @@ class ChatCompletionRequestSerializer extends StdSerializer<ChatCompletionReques
         if (chatCompletionRequest.getFunctions() != null) {
             jsonGenerator.writeObjectField("functions", this.functionParser.extractFunctions(chatCompletionRequest.getFunctions()));
         }
+
+        if (chatCompletionRequest.getFunctionCall() != null) {
+            jsonGenerator.writeObjectField("function_call", chatCompletionRequest.getFunctionCall());
+        }
         jsonGenerator.writeEndObject();
     }
 }

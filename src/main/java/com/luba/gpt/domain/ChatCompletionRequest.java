@@ -20,5 +20,5 @@ public class ChatCompletionRequest {
     private double temperature;
     private Class<? extends IBaseFunction> functions;
     @JsonProperty("function_call")
-    private List<String> functionCall;
+    private FunctionCall functionCall;
 }
