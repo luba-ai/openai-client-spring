@@ -17,7 +17,6 @@
 package com.luba;
 
 import com.luba.gpt.config.YamlPropertySourceFactory;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
