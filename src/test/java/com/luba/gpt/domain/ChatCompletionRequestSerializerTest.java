@@ -27,7 +27,11 @@ class ChatCompletionRequestSerializerTest {
         message.setContent("Hello world, how are you doing?!");
         request.setMessages(List.of(message));
         request.setFunctions(MyChatGPTFunctionClass.class);
-        request.setFunctionCall(List.of("parse_company"));
+
+        FunctionCall functionCall = new FunctionCall();
+        functionCall.setName("parse_company");
+
+        request.setFunctionCall(functionCall);
         ObjectMapper objectMapper = new ObjectMapper();
 
         String result = objectMapper.writeValueAsString(request);
@@ -76,7 +80,10 @@ class ChatCompletionRequestSerializerTest {
                         ]
                      }
                   }
-               ]
+               ],
+               "function_call": {
+                    "name": "parse_company"
+               }
             }
                         """);
     }

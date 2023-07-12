@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.luba.simple;
+package com.luba.gpt;
 
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
