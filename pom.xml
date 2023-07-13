@@ -6,7 +6,7 @@
 
     <groupId>com.luba</groupId>
     <artifactId>spring-openai-client</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.3-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
