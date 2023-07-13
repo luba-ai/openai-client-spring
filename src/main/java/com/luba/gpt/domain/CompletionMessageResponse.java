@@ -1,7 +1,6 @@
 package com.luba.gpt.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.awt.print.Book;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,9 +11,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ChatCompletionMessage {
+public class CompletionMessageResponse {
 
     @NotNull
     private Role role;
     private String content;
+    @JsonProperty("function_call")
+    private String functionCall;
 }

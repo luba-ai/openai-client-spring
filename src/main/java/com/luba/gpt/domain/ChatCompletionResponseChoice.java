@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ChatCompletionResponseChoice {
     private int index;
-    private ChatCompletionMessage message;
+    private CompletionMessageResponse message;
 }
