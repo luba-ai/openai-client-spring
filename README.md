@@ -17,7 +17,7 @@ Before using this library, you need:
 For Maven:
 
 ```xml
-        <dependency>
+<dependency>
     <groupId>com.luba</groupId>
     <artifactId>spring-openai-client</artifactId>
     <version>${luba-openai-client.version}</version>
@@ -45,15 +45,15 @@ If you prefer, you can directly set your API key in the properties file, but tak
 ```props
 luba:
   openai:
-    key: ${LUBA_OPENAI_KEY}
+    key: ${OPENAI_API_KEY}
 ```
 
 
 You can change the default configuration of the client by setting the following properties:
 
 ```props
-export LUBA_OPENAI_MODEL=gpt-3.5-turbo
-export LUBA_OPENAI_TEMPERATURE=0.6
+export OPENAI_MODEL=gpt-3.5-turbo
+export OPENAI_TEMPERATURE=0.6
 ```
 
 
