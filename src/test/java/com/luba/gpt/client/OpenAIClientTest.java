@@ -3,8 +3,8 @@ package com.luba.gpt.client;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.luba.gpt.domain.ChatCompletionRequest;
-import com.luba.gpt.domain.ChatCompletionResponse;
+import com.luba.gpt.domain.CompletionRequest;
+import com.luba.gpt.domain.CompletionResponse;
 import java.io.IOException;
 import lombok.SneakyThrows;
 import okhttp3.mockwebserver.MockResponse;
@@ -41,15 +41,15 @@ class OpenAIClientTest {
     @Test
     @SneakyThrows
     void create() {
-        ChatCompletionRequest completionRequest = new ChatCompletionRequest();
-        ChatCompletionResponse completionResponse = new ChatCompletionResponse();
+        CompletionRequest completionRequest = new CompletionRequest();
+        CompletionResponse completionResponse = new CompletionResponse();
         MockResponse response = new MockResponse()
             .setBody(objectMapper.writeValueAsString(completionResponse))
             .addHeader("Content-Type", "application/json");
         mockWebServer.enqueue(response);
 
 
-        ChatCompletionResponse result = underTest.create(completionRequest);
+        CompletionResponse result = underTest.create(completionRequest);
 
         RecordedRequest request = mockWebServer.takeRequest();
         assertThat(request.getPath()).isEqualTo("/chat/completions");

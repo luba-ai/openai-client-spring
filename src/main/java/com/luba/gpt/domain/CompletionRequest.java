@@ -12,11 +12,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonSerialize(using = ChatCompletionRequestSerializer.class)
-public class ChatCompletionRequest {
+@JsonSerialize(using = CompletionRequestSerializer.class)
+public class CompletionRequest {
 
     private String model;
-    private List<ChatCompletionMessage> messages;
+    private List<CompletionMessage> messages;
     private double temperature;
     private Class<? extends IBaseFunction> functions;
     @JsonProperty("function_call")

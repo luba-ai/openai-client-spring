@@ -10,12 +10,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ChatCompletionResponse {
+public class CompletionResponse {
 
     private String string;
     private String object;
     private Long created;
     private String model;
-    private List<ChatCompletionResponseChoice> choices;
+    private List<CompletionResponseChoice> choices;
 
 }

@@ -19,10 +19,10 @@ class ChatCompletionRequestSerializerTest {
     @Test
     @SneakyThrows
     void serialize() {
-        ChatCompletionRequest request = new ChatCompletionRequest();
+        CompletionRequest request = new CompletionRequest();
         request.setModel("gpt-3.5-turbo-16k");
         request.setTemperature(0.9);
-        ChatCompletionMessage message = new ChatCompletionMessage();
+        CompletionMessage message = new CompletionMessage();
         message.setRole(Role.user);
         message.setContent("Hello world, how are you doing?!");
         request.setMessages(List.of(message));

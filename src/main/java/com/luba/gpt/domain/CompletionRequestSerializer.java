@@ -6,21 +6,21 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import com.luba.gpt.parser.service.GPTFunctionParser;
 import java.io.IOException;
 
-class ChatCompletionRequestSerializer extends StdSerializer<ChatCompletionRequest> {
+class CompletionRequestSerializer extends StdSerializer<CompletionRequest> {
 
     private final GPTFunctionParser functionParser;
 
-    protected ChatCompletionRequestSerializer(Class<ChatCompletionRequest> t) {
+    protected CompletionRequestSerializer(Class<CompletionRequest> t) {
         super(t);
         this.functionParser = GPTFunctionParser.get();
     }
 
-    public ChatCompletionRequestSerializer() {
+    public CompletionRequestSerializer() {
         this(null);
     }
 
     @Override
-    public void serialize(ChatCompletionRequest chatCompletionRequest, JsonGenerator jsonGenerator, SerializerProvider serializerProvider)
+    public void serialize(CompletionRequest chatCompletionRequest, JsonGenerator jsonGenerator, SerializerProvider serializerProvider)
         throws IOException {
 
         jsonGenerator.writeStartObject();
@@ -29,7 +29,7 @@ class ChatCompletionRequestSerializer extends StdSerializer<ChatCompletionReques
         jsonGenerator.writeNumberField("temperature", chatCompletionRequest.getTemperature());
         jsonGenerator.writeArrayFieldStart("messages");
         if (chatCompletionRequest.getMessages() != null && !chatCompletionRequest.getMessages().isEmpty()) {
-            for (ChatCompletionMessage message : chatCompletionRequest.getMessages()) {
+            for (CompletionMessage message : chatCompletionRequest.getMessages()) {
                 jsonGenerator.writeObject(message);
             }
         }

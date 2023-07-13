@@ -65,7 +65,8 @@ This library provides an easy-to-use `GPTService` class. Here's an example of ho
 ### Basic Completion
 
 ```java
-import com.luba.gpt.domain.ChatCompletionMessage;
+import com.luba.gpt.domain.CompletionMessage;
+import com.luba.gpt.domain.CompletionResponse;
 import com.luba.gpt.domain.Role;
 import com.luba.gpt.service.GPTService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,13 +78,13 @@ public class ExampleClass {
 
     public void completionWithCustomConfiguration() {
         String prompt = "Translate the following English text to French: '{\"text\": \"Hello, world!\"}'";
-        ChatCompletionMessage message = ChatCompletionMessage
+        CompletionMessage message = CompletionMessage
             .builder()
             .content(prompt)
             .role(Role.user)
             .build();
-        List<ChatCompletionMessage> messages = List.of(message);
-        ChatCompletionResponse result = gptService.completion(messages);
+        List<CompletionMessage> messages = List.of(message);
+        CompletionResponse result = gptService.completion(messages);
         System.out.println(result);
     }
 }
@@ -96,8 +97,9 @@ In the above example, `prompt` is the input message, `role` is the role in the m
 One can also override the default configuration of the client by passing the full request object with the desired configuration:
 
 ```java
-import com.luba.gpt.domain.ChatCompletionMessage;
-import com.luba.gpt.domain.ChatCompletionRequest;
+import com.luba.gpt.domain.CompletionMessage;
+import com.luba.gpt.domain.CompletionRequest;
+import com.luba.gpt.domain.CompletionResponse;
 import com.luba.gpt.domain.Role;
 import com.luba.gpt.service.GPTService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -109,19 +111,19 @@ public class ExampleClass {
 
     public void completionWithCustomConfiguration() {
         String prompt = "Translate the following English text to French: '{\"text\": \"Hello, world!\"}'";
-        ChatCompletionMessage message = ChatCompletionMessage
+        CompletionMessage message = CompletionMessage
             .builder()
             .content(prompt)
             .role(Role.user)
             .build();
-        List<ChatCompletionMessage> messages = List.of(message);
-        
-        ChatCompletionRequest request = new ChatCompletionRequest();
+        List<CompletionMessage> messages = List.of(message);
+
+        CompletionRequest request = new CompletionRequest();
         request.setEngine("gpt-3.5-turbo");
         request.setTemperature(0.6);
         request.setMessages(messages);
-        
-        ChatCompletionResponse result = gptService.completion(request);
+
+        CompletionResponse result = gptService.completion(request);
         System.out.println(result);
     }
 }
@@ -134,8 +136,9 @@ With the introduction of functions to the ChatGPT API, the library gives a progr
 
 ```java
 
-import com.luba.gpt.domain.ChatCompletionMessage;
-import com.luba.gpt.domain.ChatCompletionRequest;
+import com.luba.gpt.domain.CompletionMessage;
+import com.luba.gpt.domain.CompletionRequest;
+import com.luba.gpt.domain.CompletionResponse;
 import com.luba.gpt.domain.Role;
 import com.luba.gpt.service.GPTService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -147,20 +150,20 @@ public class ExampleClass {
 
     public void completionWithCustomConfiguration() {
         String prompt = "Translate the following English text to French: '{\"text\": \"Hello, world!\"}'";
-        ChatCompletionMessage message = ChatCompletionMessage
+        CompletionMessage message = CompletionMessage
             .builder()
             .content(prompt)
             .role(Role.user)
             .build();
-        List<ChatCompletionMessage> messages = List.of(message);
+        List<CompletionMessage> messages = List.of(message);
 
-        ChatCompletionRequest request = new ChatCompletionRequest();
+        CompletionRequest request = new CompletionRequest();
         request.setEngine("gpt-3.5-turbo");
         request.setTemperature(0.6);
         request.setMessages(messages);
         request.setFunctions(MyChatGPTFunctionClass.class);
 
-        ChatCompletionResponse result = gptService.completion(request);
+        CompletionResponse result = gptService.completion(request);
         System.out.println(result);
     }
 }

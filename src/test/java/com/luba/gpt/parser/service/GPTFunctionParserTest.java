@@ -4,18 +4,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.luba.gpt.domain.ChatCompletionMessage;
-import com.luba.gpt.domain.ChatCompletionRequest;
 import com.luba.gpt.domain.IBaseFunction;
-import com.luba.gpt.domain.Role;
 import com.luba.gpt.parser.config.SchemaGeneratorConfig;
 import com.luba.gpt.parser.data.ArrayType;
 import com.luba.gpt.parser.data.Function;
 import com.luba.gpt.parser.data.ObjectType;
 import com.luba.gpt.parser.data.SimpleType;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Set;
 import lombok.Data;
 import lombok.SneakyThrows;

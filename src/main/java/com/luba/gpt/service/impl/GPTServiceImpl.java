@@ -2,9 +2,9 @@ package com.luba.gpt.service.impl;
 
 import com.luba.gpt.client.OpenAIClient;
 import com.luba.gpt.config.OpenAIConfig;
-import com.luba.gpt.domain.ChatCompletionMessage;
-import com.luba.gpt.domain.ChatCompletionRequest;
-import com.luba.gpt.domain.ChatCompletionResponse;
+import com.luba.gpt.domain.CompletionMessage;
+import com.luba.gpt.domain.CompletionRequest;
+import com.luba.gpt.domain.CompletionResponse;
 import com.luba.gpt.service.GPTService;
 import java.util.List;
 import lombok.NonNull;
@@ -19,18 +19,18 @@ class GPTServiceImpl implements GPTService {
     private final OpenAIConfig config;
 
     @Override
-    public @NonNull ChatCompletionResponse completion(@NonNull ChatCompletionRequest request) {
+    public @NonNull CompletionResponse completion(@NonNull CompletionRequest request) {
         return gptClient.create(request);
     }
 
     @Override
-    public @NonNull ChatCompletionResponse completion(@NonNull List<ChatCompletionMessage> messages) {
-        ChatCompletionRequest request = createRequestWithDefaults(messages);
+    public @NonNull CompletionResponse completion(@NonNull List<CompletionMessage> messages) {
+        CompletionRequest request = createRequestWithDefaults(messages);
         return gptClient.create(request);
     }
 
-    private ChatCompletionRequest createRequestWithDefaults(List<ChatCompletionMessage> messages) {
-        ChatCompletionRequest request = new ChatCompletionRequest();
+    private CompletionRequest createRequestWithDefaults(List<CompletionMessage> messages) {
+        CompletionRequest request = new CompletionRequest();
         request.setMessages(messages);
         request.setModel(config.getModel());
         request.setTemperature(config.getTemperature());

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ChatCompletionResponseChoice {
+public class CompletionResponseChoice {
     private int index;
     private CompletionMessageResponse message;
 }
