@@ -52,7 +52,7 @@ luba:
 You can change the default configuration of the client by setting the following properties:
 
 ```props
-export OPENAI_MODEL=gpt-3.5-turbo
+export OPENAI_MODEL=gpt-3.5-turbo-16
 export OPENAI_TEMPERATURE=0.6
 ```
 
@@ -119,7 +119,7 @@ public class ExampleClass {
         List<CompletionMessage> messages = List.of(message);
 
         CompletionRequest request = new CompletionRequest();
-        request.setEngine("gpt-3.5-turbo");
+        request.setEngine("gpt-3.5-turbo-16k");
         request.setTemperature(0.6);
         request.setMessages(messages);
 
@@ -158,7 +158,7 @@ public class ExampleClass {
         List<CompletionMessage> messages = List.of(message);
 
         CompletionRequest request = new CompletionRequest();
-        request.setEngine("gpt-3.5-turbo");
+        request.setEngine("gpt-3.5-turbo-16k");
         request.setTemperature(0.6);
         request.setMessages(messages);
         request.setFunctions(MyChatGPTFunctionClass.class);
@@ -197,7 +197,6 @@ The library will automatically convert all methods in the provided class to Chat
 One can specify descriptions of each method and object by using the `@JsonPropertyDescription` annotation. This will ensure that the ChatGPT API will have the proper descriptions for each function and object.
 One can additionally specify the `@JsonProperty(required = true)` annotation to specify that a member of the object is required.
 
-```java
 
 ## License
 
