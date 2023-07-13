@@ -17,5 +17,5 @@ public class CompletionMessageResponse {
     private Role role;
     private String content;
     @JsonProperty("function_call")
-    private String functionCall;
+    private FunctionCallResponse functionCall;
 }
