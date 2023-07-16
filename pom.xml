@@ -14,8 +14,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>6.0.10</spring.version>
         <spring.boot.version>3.1.0</spring.boot.version>
-        <junit.version>4.13.2</junit.version>
         <lombok.version>1.18.22</lombok.version>
+        <json.version>20220320</json.version>
+        <junit.version>4.13.2</junit.version>
         <mockwebserver.version>4.11.0</mockwebserver.version>
         <jackson.version>2.12.5</jackson.version>
     </properties>
@@ -87,6 +88,11 @@
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-jsonSchema</artifactId>
             <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>${json.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
