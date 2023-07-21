@@ -1,0 +1,7 @@
+luba:
+  openai:
+    url: ${OPENAI_URL:https://api.openai.com/v1}
+    key: ${OPENAI_API_KEY}
+    temperature: ${OPENAI_TEMPERATURE:0.9}
+    model: ${OPENAI_MODEL:gpt-3.5-turbo}
+    token-limit: ${OPENAI_TOKEN_LIMIT:8000}

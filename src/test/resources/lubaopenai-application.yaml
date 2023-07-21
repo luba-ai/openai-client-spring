@@ -1,6 +1,0 @@
-luba:
-  openai:
-    url: https://mock.api.openai.com/v1
-    key: mock-api-key
-    temperature: 0.9
-    model: gpt-3.5-turbo

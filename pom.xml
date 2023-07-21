@@ -1,37 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.luba</groupId>
     <artifactId>spring-openai-client</artifactId>
-    <version>0.0.3-SNAPSHOT</version>
-
-    <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>6.0.10</spring.version>
-        <spring.boot.version>3.1.0</spring.boot.version>
-        <lombok.version>1.18.22</lombok.version>
-        <json.version>20220320</json.version>
-        <junit.version>4.13.2</junit.version>
-        <mockwebserver.version>4.11.0</mockwebserver.version>
-        <jackson.version>2.12.5</jackson.version>
-    </properties>
-
-    <licenses>
-        <license>
-            <name>The Apache License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-        </license>
-    </licenses>
+    <groupId>com.luba</groupId>
+    <modelVersion>4.0.0</modelVersion>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
     <developers>
         <developer>
-            <name>Otmane Sabir</name>
             <email>othmane.sabir0@gmail.com</email>
+            <name>Otmane Sabir</name>
             <organization>Luba</organization>
             <organizationUrl>https://luba.ai</organizationUrl>
         </developer>
@@ -50,80 +31,106 @@
         </repository>
     </distributionManagement>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-            <version>${spring.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
-            <version>${spring.boot.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webflux</artifactId>
-            <version>${spring.boot.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-logging</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.module</groupId>
-            <artifactId>jackson-module-jsonSchema</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>${json.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring.boot.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>mockwebserver</artifactId>
-            <version>${mockwebserver.version}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+
+    <modules>
+        <module>gpt</module>
+        <module>tokenizer</module>
+    </modules>
+
+    <properties>
+        <jackson.version>2.12.5</jackson.version>
+        <json.version>20220320</json.version>
+        <junit.version>4.13.2</junit.version>
+        <lombok.version>1.18.22</lombok.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <mockwebserver.version>4.11.0</mockwebserver.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring.boot.version>3.1.0</spring.boot.version>
+        <spring.version>6.0.10</spring.version>
+    </properties>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
                 </configuration>
+                <groupId>org.apache.maven.plugins</groupId>
             </plugin>
         </plugins>
     </build>
+
+    <dependencies>
+        <dependency>
+            <artifactId>spring-context-support</artifactId>
+            <groupId>org.springframework</groupId>
+            <scope>provided</scope>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <scope>provided</scope>
+            <version>${spring.boot.version}</version>
+        </dependency>
+        <dependency>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                    <groupId>org.springframework.boot</groupId>
+                </exclusion>
+            </exclusions>
+            <groupId>org.springframework.boot</groupId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+        <dependency>
+            <artifactId>lombok</artifactId>
+            <groupId>org.projectlombok</groupId>
+            <version>${lombok.version}</version>
+        </dependency>
+        <dependency>
+            <artifactId>jackson-core</artifactId>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <artifactId>jackson-module-jsonSchema</artifactId>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <artifactId>json</artifactId>
+            <groupId>org.json</groupId>
+            <version>${json.version}</version>
+        </dependency>
+        <dependency>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <scope>test</scope>
+            <version>${spring.boot.version}</version>
+        </dependency>
+        <dependency>
+            <artifactId>junit</artifactId>
+            <groupId>junit</groupId>
+            <scope>test</scope>
+            <version>${junit.version}</version>
+        </dependency>
+        <dependency>
+            <artifactId>mockwebserver</artifactId>
+            <groupId>com.squareup.okhttp3</groupId>
+            <scope>test</scope>
+            <version>${mockwebserver.version}</version>
+        </dependency>
+    </dependencies>
 </project>
