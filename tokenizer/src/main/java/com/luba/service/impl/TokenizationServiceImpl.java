@@ -20,7 +20,6 @@ import java.util.regex.MatchResult;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Component;
@@ -31,20 +30,20 @@ public class TokenizationServiceImpl implements TokenizationService {
 
 
     private final BPEDataProvider bpeDataProvider;
-    private final ObjectMapper objectMapper;
+
+    private ObjectMapper objectMapper;
+
     private Map<String, Integer> vocab;
     private Map<List<String>, Integer> bpeRanks = new HashMap<>();
     private Map<Integer, String> byteToUnicode = new HashMap<>();
 
-    @Getter
-    private TokenizationServiceImpl instance;
 
     @PostConstruct
     void init() {
         this.vocab = this.bpeDataProvider.getVocab();
         this.byteToUnicode = this.bpeDataProvider.getBytesToUnicode();
         this.bpeRanks = this.bpeDataProvider.getBpeRanks();
-        this.instance = this;
+        this.objectMapper = new ObjectMapper();
     }
 
     @Override

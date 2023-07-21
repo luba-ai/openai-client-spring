@@ -10,8 +10,4 @@ public interface TokenizationService {
 
     @NotNull
     <T> Integer getTokenCount(@NotNull T object);
-
-    static TokenizationService getInstance() {
-        return null;
-    }
 }

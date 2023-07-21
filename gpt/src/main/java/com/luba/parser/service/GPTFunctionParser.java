@@ -9,7 +9,6 @@ import com.luba.parser.data.BaseType;
 import com.luba.parser.data.Function;
 import com.luba.parser.data.ObjectType;
 import com.luba.parser.data.SimpleType;
-import jakarta.annotation.PostConstruct;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -25,18 +24,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class GPTFunctionParser {
 
-    private static GPTFunctionParser instance;
-
     private final JsonSchemaGenerator schemaGenerator;
-
-    @PostConstruct
-    void init() {
-        instance = this;
-    }
-
-    public static GPTFunctionParser get() {
-        return instance;
-    }
 
     @SneakyThrows
     public Function[] extractFunctions(Class<? extends IBaseFunction> cls) {

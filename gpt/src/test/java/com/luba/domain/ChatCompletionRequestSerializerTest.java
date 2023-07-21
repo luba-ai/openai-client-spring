@@ -6,17 +6,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.luba.OpenAISpringClientApplication;
-import com.luba.TokenizerApplication;
 import java.util.List;
 import lombok.Data;
 import lombok.SneakyThrows;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@Disabled
-@SpringBootTest(classes = {OpenAISpringClientApplication.class, TokenizerApplication.class})
+@SpringBootTest(classes = {OpenAISpringClientApplication.class})
 class ChatCompletionRequestSerializerTest {
+
+    @Autowired
+    ObjectMapper objectMapper;
 
     @Test
     @SneakyThrows
@@ -34,7 +35,6 @@ class ChatCompletionRequestSerializerTest {
         functionCall.setName("parse_company");
 
         request.setFunctionCall(functionCall);
-        ObjectMapper objectMapper = new ObjectMapper();
 
         String result = objectMapper.writeValueAsString(request);
 

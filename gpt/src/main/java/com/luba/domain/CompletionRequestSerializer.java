@@ -7,24 +7,22 @@ import com.luba.config.OpenAIConfig;
 import com.luba.parser.service.GPTFunctionParser;
 import com.luba.service.TokenizationService;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.jackson.JsonComponent;
-import org.springframework.web.context.support.SpringBeanAutowiringSupport;
+import java.util.List;
 
-class CompletionRequestSerializer extends JsonSerializer<CompletionRequest> {
+public class CompletionRequestSerializer extends JsonSerializer<CompletionRequest> {
 
-    @Autowired
-    GPTFunctionParser functionParser;
+    private final GPTFunctionParser functionParser;
 
-    @Autowired
-    TokenizationService tokenizationService;
+    private final TokenizationService tokenizationService;
 
-    @Autowired
-    OpenAIConfig config;
+    private final OpenAIConfig config;
 
-    public CompletionRequestSerializer(){
-        SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
+    public CompletionRequestSerializer(GPTFunctionParser functionParser, TokenizationService tokenizationService, OpenAIConfig config) {
+        this.functionParser = functionParser;
+        this.tokenizationService = tokenizationService;
+        this.config = config;
     }
 
     @Override
@@ -38,11 +36,13 @@ class CompletionRequestSerializer extends JsonSerializer<CompletionRequest> {
         jsonGenerator.writeArrayFieldStart("messages");
 
         Integer tokenCount = 0;
-        if (chatCompletionRequest.getMessages() != null && !chatCompletionRequest.getMessages().isEmpty()) {
+        List<CompletionMessage> messages = chatCompletionRequest.getMessages();
+        if (messages != null && !messages.isEmpty()) {
 
-            Collections.reverse(chatCompletionRequest.getMessages());
+            List<CompletionMessage> reversedList = new ArrayList<>(messages);
+            Collections.reverse(reversedList);
 
-            for (CompletionMessage message : chatCompletionRequest.getMessages()) {
+            for (CompletionMessage message : reversedList) {
                 tokenCount += tokenizationService.getTokenCount(message);
                 if (tokenCount >= config.getTokenLimit()) {
                     break;
