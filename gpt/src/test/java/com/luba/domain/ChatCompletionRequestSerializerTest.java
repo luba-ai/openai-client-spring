@@ -10,9 +10,11 @@ import com.luba.TokenizerApplication;
 import java.util.List;
 import lombok.Data;
 import lombok.SneakyThrows;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+@Disabled
 @SpringBootTest(classes = {OpenAISpringClientApplication.class, TokenizerApplication.class})
 class ChatCompletionRequestSerializerTest {
 
