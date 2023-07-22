@@ -1,17 +1,16 @@
 package com.luba.domain;
 
 import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import com.luba.config.OpenAIConfig;
 import com.luba.parser.service.GPTFunctionParser;
 import com.luba.service.TokenizationService;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-public class CompletionRequestSerializer extends JsonSerializer<CompletionRequest> {
+public class CompletionRequestSerializer extends StdSerializer<CompletionRequest> {
 
     private final GPTFunctionParser functionParser;
 
@@ -20,6 +19,7 @@ public class CompletionRequestSerializer extends JsonSerializer<CompletionReques
     private final OpenAIConfig config;
 
     public CompletionRequestSerializer(GPTFunctionParser functionParser, TokenizationService tokenizationService, OpenAIConfig config) {
+        super(CompletionRequest.class);
         this.functionParser = functionParser;
         this.tokenizationService = tokenizationService;
         this.config = config;
@@ -39,14 +39,20 @@ public class CompletionRequestSerializer extends JsonSerializer<CompletionReques
         List<CompletionMessage> messages = chatCompletionRequest.getMessages();
         if (messages != null && !messages.isEmpty()) {
 
-            List<CompletionMessage> reversedList = new ArrayList<>(messages);
-            Collections.reverse(reversedList);
 
-            for (CompletionMessage message : reversedList) {
-                tokenCount += tokenizationService.getTokenCount(message);
-                if (tokenCount >= config.getTokenLimit()) {
-                    break;
-                }
+            // TODO: optimize this
+            // we want to limit the number of tokens we send to OpenAI
+            // so we need to count the tokens in the messages
+            // remove the oldest message (first in the array)
+            List<CompletionMessage> messagesCopy = new ArrayList<>(messages);
+            tokenCount = tokenizationService.getTokenCount(messagesCopy);
+            int i = messages.size();
+            while (tokenCount >= config.getTokenLimit() && !messagesCopy.isEmpty()) {
+                messagesCopy.remove(--i);
+                tokenCount -= tokenizationService.getTokenCount(messagesCopy);
+            }
+
+            for (CompletionMessage message : messagesCopy) {
                 jsonGenerator.writeObject(message);
             }
         }

@@ -14,6 +14,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import lombok.RequiredArgsConstructor;
@@ -32,9 +33,8 @@ public class GPTFunctionParser {
         return Arrays.stream(methods).map((method) -> {
             Function function = new Function();
             function.setName(method.getName());
-            Optional.ofNullable(method.getAnnotation(JsonPropertyDescription.class))
-                .map(JsonPropertyDescription::value)
-                .ifPresent(function::setDescription);
+            Optional.ofNullable(method.getAnnotation(JsonPropertyDescription.class)).map(JsonPropertyDescription::value)
+                .ifPresentOrElse(function::setDescription, () -> function.setDescription(""));
             function.setParameters(parseParameter(method.getReturnType()));
             return function;
         }).toArray(Function[]::new);
@@ -80,7 +80,7 @@ public class GPTFunctionParser {
             String type = schema.getType().value();
             SimpleType object = new SimpleType();
             object.setType(type);
-            object.setDescription(description);
+            object.setDescription(Objects.requireNonNullElse(description, ""));
             return object;
         }
 
