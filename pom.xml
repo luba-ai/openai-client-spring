@@ -46,7 +46,7 @@
 
     <properties>
         <jackson.version>2.12.5</jackson.version>
-        <json.version>20220320</json.version>
+        <json.version>[20230227,)</json.version>
         <junit.version>4.13.2</junit.version>
         <lombok.version>1.18.22</lombok.version>
         <maven.compiler.source>17</maven.compiler.source>
