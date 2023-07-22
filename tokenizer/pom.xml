@@ -6,13 +6,13 @@
 
     <artifactId>tokenizer</artifactId>
     <name>tokenizer</name>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.2-SNAPSHOT</version>
     <url>https://www.luba-app.com</url>
 
     <parent>
         <artifactId>spring-openai-client</artifactId>
         <groupId>com.luba</groupId>
-        <version>1.0.1-SNAPSHOT</version>
+        <version>1.0.2-SNAPSHOT</version>
     </parent>
 
     <properties>
