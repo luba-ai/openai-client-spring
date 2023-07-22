@@ -57,7 +57,7 @@ class ChatCompletionRequestSerializerTest {
                         "properties":{
                            "location":{
                               "type":"string",
-                              "description":null
+                              "description":""
                            },
                            "user":{
                               "type":"object",
